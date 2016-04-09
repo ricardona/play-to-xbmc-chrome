@@ -64,7 +64,10 @@
     }, {
         "matches": ["*://*.cda.pl/*"],
         "js": ["js/content_scripts/cda-content-scripts.js", "js/jquery-2.1.4.min.js"]
-    }],
+    }, {
+        "matches": ["*://*.kissanime.to/*"],
+        "js": ["js/content_scripts/kissanime-content-scripts.js", "js/jquery-2.1.4.min.js"]
+    }],    
     "web_accessible_resources": [
         "images/*"
     ]

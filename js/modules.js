@@ -691,6 +691,25 @@ var CdaModule = {
     }
 };
 
+var KissAnimeModule = {
+    canHandleUrl: function(url) {
+        var validPatterns = [
+            ".*kissanime.to/.*"
+            ".*kissanime.to/Anime/.*"
+        ];
+        return urlMatchesOneOfPatterns(url, validPatterns);
+    },
+    getMediaType: function() {
+        return 'video';
+    },
+    getPluginPath: function(url, callback) {
+        chrome.tabs.sendMessage(currentTabId, {action: 'getVideoSrc'}, function (response) {
+            if (response) {
+                callback(response.videoSrc);
+            }
+        });
+    }
+};
 
 var allModules = [
     DirectVideoLinkModule,
@@ -725,5 +744,6 @@ var allModules = [
     VesselLabModule,
     Mp4UploadModule,
     ZdfMediathekModule,
-    CdaModule
+    CdaModule,
+    KissAnimeModule
 ];
